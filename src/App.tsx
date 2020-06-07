@@ -1,11 +1,11 @@
 import React from 'react';
+import {Homepage} from './components/Homepage'
 
-function App() {
-  return (
-    <div className="App">
-      Hello there
-    </div>
-  );
+export const App = () => {
+  return(
+    <>
+      <Homepage />
+    </>
+  )
 }
 
-export default App;
