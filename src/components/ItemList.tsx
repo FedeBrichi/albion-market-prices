@@ -1,37 +1,42 @@
 import React from 'react';
-// import {Grid, TextField} from '@material-ui/core';
 import { Item } from '../types/Item';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import {ItemCard} from './ItemCard';
+import { Link } from 'react-router-dom';
+import { ItemCard } from './ItemCard';
+import { FixedSizeGrid, GridChildComponentProps } from 'react-window';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: '100%',
-      height: 400,
-      maxWidth: 300,
-      backgroundColor: theme.palette.background.paper,
-    },
-  }),
-);
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 type Props = {
   items: Item[];
 };
 
 export const ItemList = ({ items }: Props) => {
-  const classes = useStyles();
+  const itemGrid = items.map(item => {
+    return (
+      <Link to={`/details/${item.id}`} style={{ textDecoration: 'none' }}>
+        <ItemCard {...item} />
+      </Link>
+    );
+  });
+
+  const Row = ({ columnIndex, rowIndex, style }: GridChildComponentProps) => {
+    return <div style={style}>{itemGrid[rowIndex * 2 + columnIndex + rowIndex]}</div>;
+  };
 
   return (
-    <div className={classes.root}>
-      {items.slice(0, 20).map((item, index) => {
-        return <ItemCard {...item}/>
-        // <div key={index} >
-          
-        // <img src={`http://gameinfo.albiononline.com/api/gameinfo/items/${item.id}`} alt={`${item.name}`}/>
-        // <div >{item.name}</div>
-        // </div>;
-      })}
-    </div>
+    <AutoSizer>
+      {({ height, width }) => (
+        <FixedSizeGrid
+          height={height}
+          columnCount={3}
+          columnWidth={width / 3}
+          rowHeight={170}
+          rowCount={1000}
+          width={width}
+        >
+          {Row}
+        </FixedSizeGrid>
+      )}
+    </AutoSizer>
   );
 };

@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-// import {Grid, TextField} from '@material-ui/core';
-import { useItems } from '../hooks/item-hooks';
-import { Navbar } from './Navbar';
+import React from 'react';
 import { ItemList } from './ItemList';
-import { Item } from '../types/Item';
+
+import baseItems from '../utils/baseItems.json';
+import { makeStyles } from '@material-ui/core';
+
+const useStyle = makeStyles({
+  content: {
+    height: '100%',
+  },
+});
 
 export const Homepage = () => {
-  const { items } = useItems();
-
-  const [itemList, setItemList] = useState<Item[]>(items);
-
+  const classes = useStyle();
   return (
-    <>
-      <Navbar setItemList={setItemList} />
-      <ItemList items={itemList} />
-    </>
+    <div className={classes.content}>
+      <ItemList items={baseItems} />
+    </div>
   );
 };
