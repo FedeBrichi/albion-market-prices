@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     color: theme.palette.secondary.dark,
     backgroundColor: theme.palette.secondary.light,
-    margin: '1rem 0.5rem',
+    margin: '0.5rem 0.5rem',
   },
   icon: {
     position: 'relative',
@@ -35,9 +35,7 @@ export const ItemCard = ({ id, name }: Props) => {
           <img src={imgUrl} className={classes.icon} alt={name} />
         </Grid>
         <Grid item>
-          <Typography className={classes.name}>
-            {name.length > 20 ? name.substring(0, 20) + '...' : name}
-          </Typography>
+          <Typography className={classes.name}>{name}</Typography>
         </Grid>
       </Grid>
     </Paper>
