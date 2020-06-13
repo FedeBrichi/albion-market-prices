@@ -1,6 +1,5 @@
 import React from 'react';
 import { Item } from '../types/Item';
-import { Link } from 'react-router-dom';
 import { ItemCard } from './ItemCard';
 import { FixedSizeGrid, GridChildComponentProps } from 'react-window';
 
@@ -12,11 +11,7 @@ type Props = {
 
 export const ItemList = ({ items }: Props) => {
   const itemGrid = items.map(item => {
-    return (
-      <Link to={`/details/${item.id}`} style={{ textDecoration: 'none' }}>
-        <ItemCard {...item} />
-      </Link>
-    );
+    return <ItemCard {...item} />;
   });
 
   const Row = ({ columnIndex, rowIndex, style }: GridChildComponentProps) => {
@@ -25,7 +20,7 @@ export const ItemList = ({ items }: Props) => {
 
   const getRowHeight = (width: number) => {
     if (width >= 1000) return 130;
-    if (width >= 700) return 150;
+    if (width >= 770) return 150;
     if (width >= 500) return 180;
     return 200;
   };
