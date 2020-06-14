@@ -1,5 +1,5 @@
 import React from 'react';
-import { Homepage } from './components/Homepage';
+import { Items } from './components/Items';
 import { Navbar } from './components/Navbar';
 import { ItemDetails } from './components/ItemDetails';
 import { Route, Switch, useLocation } from 'react-router-dom';
@@ -21,7 +21,7 @@ export const App = () => {
       <Navbar />
       <div className={classes.app}>
         <Switch location={location}>
-          <Route exact path="/" component={Homepage} />
+          <Route exact path="/" component={Items} />
           <Route exact path="/details/:id" component={ItemDetails} />
         </Switch>
       </div>

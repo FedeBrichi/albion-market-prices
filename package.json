@@ -14,15 +14,18 @@
     "@types/node": "^12.12.42",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
+    "redux": "^4.0.5",
     "typescript": "^3.7.5"
   },
   "scripts": {
